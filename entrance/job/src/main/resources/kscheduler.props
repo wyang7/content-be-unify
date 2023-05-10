@@ -1,0 +1,3 @@
+"kscheduler.zk-connect-url" ~> "#{music.zoo^zk_4#servers}"
+
+"kscheduler.group-name" ~> "music-server-sample"

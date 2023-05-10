@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [<!ENTITY buildfile SYSTEM "file:./build-user.xml">]>
+<project basedir="." default="deploy" name="demo">
+    <property name="groovy" value="groovy"/>
+    <property name="python" value="python"/>
+    <property name="module" value="entrance/web"/>
+    <!-- <property name="mvn" value="mvnJDK8"/> -->
+    <property name="mvn" value="/Users/xiehui/Programs/apache-maven-3.5.0/bin/mvn"/>
+    <property name="conf.dir" value="${basedir}/conf"/>
+    <property name="dist.dir" value="${module}/target"/>
+    <property name="compress.dir" value="compressed"/>
+    <property name="baseline.dir" value="${basedir}"/>
+    <property name="artifact.dir" value="${baseline.dir}/compressed"/>
+
+    <target name="clean">
+        <delete dir="${dist.dir}"/>
+        <delete dir="${compress.dir}"/>
+    </target>
+
+    <target name="parentInstall">
+        <exec executable="${mvn}" failonerror="true">
+            <arg line="clean install -Dmaven.test.skip=true"/>
+        </exec>
+    </target>
+
+    <target name="copyapplib" depends="clean,parentInstall">
+        <exec executable="${mvn}" failonerror="true">
+            <arg value="dependency:copy-dependencies"/>
+        </exec>
+    </target>
+
+    <target name="compress-app">
+        <mkdir dir="${compress.dir}"/>
+        <copy todir="${compress.dir}/lib" preservelastmodified="true">
+            <fileset dir="${dist.dir}/dependency"/>
+            <fileset dir="${dist.dir}" includes="*.jar" excludes="*-sources.jar"/>
+        </copy>
+    </target>
+
+    <target name="compress-sentry">
+        <copy todir="${compress.dir}/conf" preservelastmodified="true">
+            <fileset dir="${conf.dir}"/>
+        </copy>
+    </target>
+
+    <target name="deploy">
+        <echo message="begin auto deploy......"/>
+        <antcall target="copyapplib"/>
+        <antcall target="compress-app"/>
+        <antcall target="compress-sentry"/>
+    </target>
+</project>

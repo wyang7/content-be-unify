@@ -1,0 +1,5 @@
+"batch.rpc.zkServers" ~> "${zoo.servers}"
+
+"batch.rpc.zkDigest" ~> "${zoo.digest}"
+
+"batch.rpc.serviceType" ~> "${rootArtifactId}"

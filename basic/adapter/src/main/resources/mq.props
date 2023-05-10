@@ -1,0 +1,7 @@
+"spring.rocketmqx.consumer.consume-from-where" ~> "CONSUME_FROM_LAST_OFFSET"
+
+"spring.rocketmqx.consumer.consume-thread-max" ~> "64"
+
+"spring.rocketmqx.consumer.reconsume-max-time" ~> "16"
+
+"spring.rocketmqx.producer.group" ~> "TODO"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Log4j 2.x 空配置文件，至少要有一个log4j2配置文件 -->
+<Configuration useTemplate="true" templateEnv="online">
+    <Properties>
+    </Properties>
+
+    <Appenders>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.netease.framework.memcache.manager.impl" level="error"/>
+    </Loggers>
+</Configuration>

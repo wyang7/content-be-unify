@@ -1,0 +1,7 @@
+"ddb.url" ~> "#{music.ddb^TODO#url}"
+
+"ddb.mirrorUrl" ~> "#{music.ddb^TODO#mirror.url}"
+
+"ddb.backupUrl" ~> "#{music.ddb^TODO#backup.url}"
+
+"ddb.mem.memcachedName" ~> "TODO"

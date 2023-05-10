@@ -1,0 +1,17 @@
+"rpc.zoo.servers" ~> "${zoo.servers}"
+
+"rpc.zoo.digest" ~> "${zoo.digest}"
+
+"rpc.builder.user" ~ {
+    "key" ~> {
+        "app_user_api_netty_server" in online
+        "app_user_api_netty_server_pre" in pre
+        "test_app_user_api_netty_server" default
+    }
+    "services" ~> """
+                   |com.netease.cloudmusic.app.user.service.UserService,
+                   |com.netease.cloudmusic.app.manager.service.ManagerService
+                  """.stripMargin
+    "metaSerializer" ~> "com.netease.music.rpc.serializer.Hessian2MetaSerializer"
+}
+
