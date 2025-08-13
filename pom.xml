@@ -8,6 +8,7 @@
         <version>2.0.0.RELEASE</version>
     </parent>
 
+
     <packaging>pom</packaging>
     <groupId>com.resource.wangyang</groupId>
     <artifactId>content-be-unify</artifactId>
